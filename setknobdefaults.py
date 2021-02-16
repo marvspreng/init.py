@@ -1,5 +1,29 @@
 #set knobdefaults
 
+#Organization
+
+#Labels
+nuke.knobDefault("TimeOffset.label", "[value time_offset]")
+nuke.knobDefault("Blur.label","[value size]")
+nuke.knobDefault('Tracker.label', '[value transform] / ref:[value reference_frame]')
+nuke.knobDefault('Switch.label', '[value which]')
+nuke.knobDefault('Dissolve.label', '[value which]')
+nuke.knobDefault("StickyNote.note_font_size", "50")
+nuke.addOnUserCreate(lambda:nuke.thisNode()['first_frame'].setValue(nuke.frame()), nodeClass='FrameHold')
+
+#Optimization
+
+#Misc
+nuke.knobDefault( "Grade.black_clamp" , "false" ) 
+nuke.knobDefault('STMap.uv', 'rgba')
+nuke.knobDefault("EXPTool.mode", "0")
+nuke.knobDefault("ScanlineRender.motion_vectors_type", "off")
+nuke.knobDefault("ScanlineRender.MB_channel", "none")
+nuke.knobDefault("LensDistortion.gridType", "Thin Line")
+
+#Viewer
+nuke.knobDefault("Viewer.freezeGuiWhenPlayBack", "1")  
+
 # RotoPaint > Set default tool to brush, set default lifetime for brush and clone to "all frames"  
 nuke.knobDefault("RotoPaint.toolbox", "brush {{brush ltt 0} {clone ltt 0}}")
 nuke.knobDefault("RotoPaint.toolbox", '''clone {
@@ -11,23 +35,10 @@ nuke.knobDefault("Roto.feather_type", "smooth")
 nuke.knobDefault("Bezier.output","alpha")
 nuke.knobDefault("Bezier.linear","on")
 
-#Misc
-nuke.addOnUserCreate(lambda:nuke.thisNode()['first_frame'].setValue(nuke.frame()), nodeClass='FrameHold')
-nuke.knobDefault( "Grade.black_clamp" , "false" ) 
-nuke.knobDefault('STMap.uv', 'rgba')
-nuke.knobDefault("EXPTool.mode", "0")
-nuke.knobDefault("StickyNote.note_font_size", "50")
-nuke.knobDefault('Tracker.label', '[value transform] / ref:[value reference_frame]')
-nuke.knobDefault('Switch.label', '[value which]')
-nuke.knobDefault('Dissolve.label', '[value which]')
-nuke.knobDefault("Blur.label","[value size]")
+#bbox - management
+nuke.knobDefault("Merge.bbox", "3")
 nuke.knobDefault("Project3D.crop", "0")
-nuke.knobDefault("ScanlineRender.motion_vectors_type", "off")
-nuke.knobDefault("ScanlineRender.MB_channel", "none")
-nuke.knobDefault("TimeOffset.label", "[value time_offset]")
-nuke.knobDefault("LensDistortion.gridType", "Thin Line")
-
-# NO CLIPS
+# bbox - NO CLIPS
 nuke.knobDefault("Roto.cliptype","no clip")
 nuke.knobDefault("RotoPaint.cliptype","no clip")
 nuke.knobDefault("Grid.cliptype","no clip")
@@ -37,8 +48,6 @@ nuke.knobDefault("Rectangle.cliptype","no clip")
 nuke.knobDefault("Ramp.cliptype","no clip")
 nuke.knobDefault("Text2.cliptype","no clip")
 
-#Viewer
-nuke.knobDefault("Viewer.freezeGuiWhenPlayBack", "1")  
 
-#bbox
-nuke.knobDefault("Merge.bbox", "3")
+
+
